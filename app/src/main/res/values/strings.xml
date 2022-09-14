@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">RickAndMorty</string>
+
+    <string name="alive">alive</string>
+    <string name="dead">dead</string>
+    <string name="female_pronoun">She</string>
+    <string name="location_unknown">Location is unknown</string>
+    <string name="location">Location</string>
+    <string name="male_pronoun">He</string>
+    <string name="origin_unknown">Origin is unknown</string>
+    <string name="origin">Origin</string>
+    <string name="search">Search</string>
+    <string name="search_by_name">Search by name</string>
+    <string name="something_went_wrong">Something went wrong</string>
+    <string name="species_format">%1$s %2$s</string>
+    <string name="status_format">%1$s is %2$s</string>
+    <string name="status_unknown_format">Is %1$s alive? Nobody knows</string>
+    <string name="try_again">Try again</string>
+    <string name="type_format">%1$s is a %2$s</string>
+    <string name="unknown_pronoun">It</string>
+</resources>

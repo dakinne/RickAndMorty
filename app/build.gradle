@@ -60,7 +60,6 @@ dependencies {
 
     // Moshi
     implementation "com.squareup.moshi:moshi:1.14.0"
-    testImplementation 'org.junit.jupiter:junit-jupiter'
     kapt "com.squareup.moshi:moshi-kotlin-codegen:1.14.0"
 
     // Kotlin Coroutines

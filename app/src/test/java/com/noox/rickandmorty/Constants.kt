@@ -48,10 +48,10 @@ class Constants {
         CharacterDTO(
             id = 1,
             name = null,
-            status = Status.unknown,
+            status = null,
             species = null,
             type = null,
-            gender = Gender.unknown,
+            gender = null,
             image = null,
             origin = null,
             location = null

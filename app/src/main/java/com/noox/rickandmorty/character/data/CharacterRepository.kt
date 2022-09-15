@@ -11,7 +11,8 @@ import kotlinx.coroutines.flow.map
 private const val PAGE_SIZE = 20
 
 class CharacterRepository(
-    private val dataSource: CharacterPagingSource,
+    private val pagingSource: CharacterPagingSource,
+    private val dataSource: CharacterDataSource,
     private val mapper: CharactersMapper
 ) {
 
@@ -22,8 +23,8 @@ class CharacterRepository(
                 enablePlaceholders = false
             ),
             pagingSourceFactory = {
-                dataSource.query = query
-                dataSource
+                pagingSource.query = query
+                pagingSource
             }
         )
             .flow
@@ -32,6 +33,10 @@ class CharacterRepository(
                     mapper.mapToModel(characterDTO)
                 }
             }
+    }
+
+    suspend fun getCharacter(id: Int): Result<Character> {
+        return dataSource.getCharacter(id).map { mapper.mapToModel(it) }
     }
 
 }

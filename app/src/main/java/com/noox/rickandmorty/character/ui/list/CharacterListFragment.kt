@@ -6,7 +6,6 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
-import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
@@ -21,7 +20,6 @@ import com.noox.rickandmorty.databinding.FragmentCharacterListBinding
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
-
 
 class CharacterListFragment : Fragment() {
 
@@ -96,9 +94,7 @@ class CharacterListFragment : Fragment() {
     private fun navigateToCharacter(character: Character) {
         findNavController().navigate(
             R.id.action_nav_to_character_detail,
-            bundleOf(
-                CharacterDetailFragment.ARG_CHARACTER to character
-            )
+            CharacterDetailFragment.bundle(characterId = character.id)
         )
     }
 }

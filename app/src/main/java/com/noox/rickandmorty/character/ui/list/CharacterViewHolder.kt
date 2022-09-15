@@ -27,6 +27,7 @@ class CharacterViewHolder(
         binding.image.load(character.image) {
             crossfade(true)
             placeholder(R.drawable.image_placeholder)
+            error(R.drawable.image_placeholder)
         }
 
         val species = if (character.species == "unknown") "" else character.species

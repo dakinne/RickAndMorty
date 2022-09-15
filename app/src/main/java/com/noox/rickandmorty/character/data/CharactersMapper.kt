@@ -10,24 +10,24 @@ class CharactersMapper {
 
     fun mapToModel(dto: CharacterDTO) = Character(
         id = dto.id,
-        name = dto.name ?: "--",
-        type = dto.type ?: "--",
-        image = dto.image ?: "--",
+        name = dto.name ?: "",
+        type = dto.type ?: "",
+        image = dto.image ?: "",
         status = dto.status ?: Status.unknown,
         gender = dto.gender ?: Gender.unknown,
-        species = dto.species ?: "--",
+        species = dto.species ?: "",
 
         origin = dto.origin?.let { mapToModel(it) },
         location = dto.location?.let { mapToModel(it) }
     )
 
     private fun mapToModel(dto: OriginDTO) = Origin(
-        name = dto.name ?: "--",
-        url = dto.url ?: "--"
+        name = dto.name ?: "",
+        url = dto.url ?: ""
     )
 
     private fun mapToModel(dto: LocationDTO) = Location(
-        name = dto.name ?: "--",
-        url = dto.url ?: "--"
+        name = dto.name ?: "",
+        url = dto.url ?: ""
     )
 }

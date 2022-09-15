@@ -14,7 +14,51 @@ import com.noox.rickandmorty.core.model.Status
 
 class Constants {
 
-    val characterPage1 by lazy {
+    val emptyCharactersPage1 by lazy {
+        """
+{
+	"info": {
+		"count": 826,
+		"pages": 42,
+		"next": null,
+		"prev": null
+	},
+	"results": [{
+			"id": 1
+		}
+	]
+}
+        """.trimIndent()
+    }
+
+    val emptyCharactersPageDTO1 by lazy {
+        CharactersPageDTO(
+            info = InfoDTO(
+                pages = 42,
+                next = null,
+                prev = null
+            ),
+            characters = listOf(
+                emptyCharacterDTO
+            )
+        )
+    }
+
+    val emptyCharacterDTO by lazy {
+        CharacterDTO(
+            id = 1,
+            name = null,
+            status = Status.unknown,
+            species = null,
+            type = null,
+            gender = Gender.unknown,
+            image = null,
+            origin = null,
+            location = null
+        )
+    }
+
+    val charactersPage1 by lazy {
         """
 {
 	"info": {
@@ -117,6 +161,20 @@ class Constants {
                 name = "Citadel of Ricks",
                 url = "https://rickandmortyapi.com/api/location/3"
             )
+        )
+    }
+
+    val emptyCharacter by lazy {
+        Character(
+            id = 1,
+            name = "",
+            status = Status.unknown,
+            species = "",
+            type = "",
+            gender = Gender.unknown,
+            image = "",
+            origin = null,
+            location = null
         )
     }
 

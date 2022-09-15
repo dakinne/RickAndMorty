@@ -20,4 +20,14 @@ class CharactersMapperTest {
         Assert.assertEquals(expected, model)
     }
 
+    @Test
+    fun givenFullNullDTO_whenMapping_ThenReturnDomainModel() {
+        val expected = constants.emptyCharacter
+        val input = constants.emptyCharacterDTO
+
+        val model = mapper.mapToModel(input)
+
+        Assert.assertEquals(expected, model)
+    }
+
 }

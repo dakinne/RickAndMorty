@@ -23,8 +23,11 @@ class CharacterApiServiceTest {
     private lateinit var mockWebServer: MockWebServer
 
     private val constants by lazy { Constants() }
-    private val page = constants.characterPage1
-    private val expectedCharacterPageDTO = constants.charactersPageDTO1
+    private val charactersPage = constants.charactersPage1
+    private val expectedCharactersPageDTO = constants.charactersPageDTO1
+
+    private val emptyCharactersPage = constants.emptyCharactersPage1
+    private val expectedEmptyCharactersPageDTO = constants.emptyCharactersPageDTO1
 
     @Before
     fun createService() {
@@ -46,11 +49,22 @@ class CharacterApiServiceTest {
     @Test
     fun loadCharacters() = runTest {
         mockWebServer.enqueue(
-            MockResponse().setResponseCode(200).setBody(page)
+            MockResponse().setResponseCode(200).setBody(charactersPage)
         )
         val charactersPageDTO = apiService.getCharacters(1, "")
 
         assertNotNull(charactersPageDTO)
-        assertEquals(expectedCharacterPageDTO, charactersPageDTO)
+        assertEquals(expectedCharactersPageDTO, charactersPageDTO)
+    }
+
+    @Test
+    fun loadEmptyCharacters() = runTest {
+        mockWebServer.enqueue(
+            MockResponse().setResponseCode(200).setBody(emptyCharactersPage)
+        )
+        val charactersPageDTO = apiService.getCharacters(1, "")
+
+        assertNotNull(charactersPageDTO)
+        assertEquals(expectedEmptyCharactersPageDTO, charactersPageDTO)
     }
 }

@@ -1,26 +1,18 @@
 package com.noox.rickandmorty.character.ui.list
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.lifecycle.Observer
 import androidx.paging.PagingData
 import androidx.paging.map
-import com.noox.rickandmorty.Constants
-import com.noox.rickandmorty.character.domain.model.Character
 import com.noox.rickandmorty.character.domain.usecase.GetCharacters
+import com.noox.rickandmorty.util.Constants
+import com.noox.rickandmorty.util.MainDispatcherRule
 import io.mockk.coEvery
 import io.mockk.coVerify
-
 import io.mockk.mockk
-import io.mockk.spyk
-import io.mockk.verify
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
-import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
@@ -34,7 +26,7 @@ import org.junit.Test
 class CharacterListViewModelTest {
 
     @get:Rule
-    val rule = InstantTaskExecutorRule()
+    val dispatcherRule = MainDispatcherRule()
 
     private val getCharacters = mockk<GetCharacters>()
     private lateinit var viewModel: CharacterListViewModel

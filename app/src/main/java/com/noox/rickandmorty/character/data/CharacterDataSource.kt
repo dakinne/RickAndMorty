@@ -1,6 +1,7 @@
 package com.noox.rickandmorty.character.data
 
 import com.noox.rickandmorty.core.api.ApiService
+import com.noox.rickandmorty.core.data.Result
 
 class CharacterDataSource(
     private val service: ApiService
@@ -8,9 +9,9 @@ class CharacterDataSource(
 
     suspend fun getCharacter(id: Int) : Result<CharacterDTO> {
         return try {
-            Result.success(service.getCharacter(id))
+            Result.Success(service.getCharacter(id))
         } catch (throwable: Throwable) {
-            Result.failure(throwable)
+            Result.Failure(throwable)
         }
     }
 

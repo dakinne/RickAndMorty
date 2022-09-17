@@ -5,6 +5,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.map
 import com.noox.rickandmorty.character.domain.model.Character
+import com.noox.rickandmorty.core.data.Result
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 

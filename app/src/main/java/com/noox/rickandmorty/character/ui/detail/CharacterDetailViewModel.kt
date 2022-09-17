@@ -30,7 +30,7 @@ class CharacterDetailViewModel(
         viewModelScope.launch {
             _uiState.emit(UiState.Loading)
             getCharacter(characterId).fold(
-                onSuccess = { _uiState.emit(UiState.Success(it))},
+                onSuccess = { _uiState.emit(UiState.Success(it)) },
                 onFailure = { _uiState.emit(UiState.Error) }
             )
         }

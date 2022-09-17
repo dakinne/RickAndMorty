@@ -1,7 +1,7 @@
 package com.noox.rickandmorty.character.data
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import com.noox.rickandmorty.Constants
+import com.noox.rickandmorty.util.Constants
 import com.noox.rickandmorty.core.api.ApiService
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
@@ -23,11 +23,14 @@ class CharacterApiServiceTest {
     private lateinit var mockWebServer: MockWebServer
 
     private val constants by lazy { Constants() }
-    private val charactersPage = constants.charactersPage1
+    private val charactersPage = constants.jsonOfCharactersPage1
     private val expectedCharactersPageDTO = constants.charactersPageDTO1
 
-    private val emptyCharactersPage = constants.emptyCharactersPage1
+    private val emptyCharactersPage = constants.jsonOfEmptyCharactersPage1
     private val expectedEmptyCharactersPageDTO = constants.emptyCharactersPageDTO1
+
+    private val character = constants.jsonOfCharacter1
+    private val expectedCharacterDTO = constants.characterDTO1
 
     @Before
     fun createService() {
@@ -66,5 +69,16 @@ class CharacterApiServiceTest {
 
         assertNotNull(charactersPageDTO)
         assertEquals(expectedEmptyCharactersPageDTO, charactersPageDTO)
+    }
+
+    @Test
+    fun loadCharacter() = runTest {
+        mockWebServer.enqueue(
+            MockResponse().setResponseCode(200).setBody(character)
+        )
+        val characterDTO = apiService.getCharacter(1)
+
+        assertNotNull(characterDTO)
+        assertEquals(expectedCharacterDTO, characterDTO)
     }
 }

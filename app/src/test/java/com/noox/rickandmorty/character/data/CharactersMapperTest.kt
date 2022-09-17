@@ -1,6 +1,6 @@
 package com.noox.rickandmorty.character.data
 
-import com.noox.rickandmorty.Constants
+import com.noox.rickandmorty.util.Constants
 import org.junit.Assert
 import org.junit.Test
 
